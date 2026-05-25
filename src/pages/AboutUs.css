@@ -1,0 +1,29 @@
+.about-body-wrap {
+    background-color: #210e0c; /* bg-background */
+    color: #ffdad4; /* on-background */
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.glass-card {
+    background: rgba(47, 26, 23, 0.4);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-glow {
+    background: radial-gradient(circle at center, rgba(230, 0, 0, 0.15) 0%, transparent 70%);
+}
+
+.particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: rgba(255, 180, 168, 0.3);
+    border-radius: 50%;
+    pointer-events: none;
+}

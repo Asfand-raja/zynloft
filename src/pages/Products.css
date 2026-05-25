@@ -1,0 +1,33 @@
+.products-body-wrap {
+    background-color: #1b0907; /* surface-container-lowest fallback */
+    color: #ffdad4; /* on-surface fallback */
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+}
+
+.material-symbols-outlined {
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    vertical-align: middle;
+}
+
+.glass-card {
+    background: rgba(47, 26, 23, 0.4);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.hero-gradient {
+    background: radial-gradient(circle at top right, rgba(230, 0, 0, 0.15), transparent 40%),
+                radial-gradient(circle at bottom left, rgba(255, 183, 127, 0.05), transparent 30%);
+}
+
+.shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 3s infinite;
+}
+
+@keyframes shimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}

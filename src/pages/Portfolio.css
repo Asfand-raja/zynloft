@@ -1,0 +1,52 @@
+.portfolio-body-wrap {
+    background-color: #1b0907; /* surface-container-lowest */
+    color: #ffdad4; /* on-surface */
+    overflow-x: hidden;
+}
+
+.glass-card {
+    background: rgba(47, 26, 23, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+    border-color: rgba(255, 180, 168, 0.3);
+    background: rgba(47, 26, 23, 0.6);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(230, 0, 0, 0.1);
+}
+
+.gradient-text {
+    background: linear-gradient(135deg, #e60000 0%, #ff8a00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero-aura {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(230, 0, 0, 0.15) 0%, rgba(230, 0, 0, 0) 70%);
+    filter: blur(80px);
+    pointer-events: none;
+    z-index: -1;
+}
+
+.system-readout {
+    font-family: 'JetBrains Mono', monospace;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Particle Background Simulation */
+#particles-js {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+    background-image: radial-gradient(#2f1a17 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.2;
+}
