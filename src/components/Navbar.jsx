@@ -25,7 +25,7 @@ export default function Navbar() {
     { to: "/products", label: "Products" },
     { to: "/about", label: "About Us" },
     { to: "/contact", label: "Contact" },
-    { to: "/privacy-policy", label: "Privacy" }
+    { to: "/privacy-policy", label: "Privacy Policy" }
   ];
 
   return (
