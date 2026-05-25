@@ -46,9 +46,9 @@ export default function Navbar() {
             <span className="material-symbols-outlined text-3xl">menu</span>
           </button>
 
-          <Link to="/" className="text-2xl font-extrabold tracking-tighter text-[#ffdad4] flex items-center gap-2">
+          <Link to="/" className="text-xl md:text-2xl font-extrabold tracking-tighter text-[#ffdad4] flex items-center gap-2">
             <img src={logoUrl} alt="Zynloft Logo" className="h-8 w-8 rounded-full object-cover" />
-            <span className="hidden sm:inline-block">ZYNLOFT</span>
+            ZYNLOFT
           </Link>
           
           <div className="hidden md:flex items-center gap-8 font-semibold text-sm">
