@@ -21,21 +21,32 @@ function ScrollToTop() {
   return null;
 }
 
+import { HelmetProvider } from 'react-helmet-async';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 export default function App() {
   return (
-    <Router>
-      <ScrollToTop />
-      <Navbar />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/services" element={<Services />} />
-        <Route path="/portfolio" element={<Portfolio />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/about" element={<AboutUs />} />
-        <Route path="/contact" element={<ContactUs />} />
-        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      </Routes>
-      <Footer />
-    </Router>
+    <HelmetProvider>
+      <Router>
+        <ScrollToTop />
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
+          <Route path="/portfolio" element={<Portfolio />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+        </Routes>
+        <Footer />
+        <ToastContainer 
+          position="bottom-right"
+          theme="dark"
+          toastClassName="bg-surface-container border border-outline-variant text-on-surface font-body-md"
+        />
+      </Router>
+    </HelmetProvider>
   );
 }

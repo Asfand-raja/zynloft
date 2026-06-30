@@ -1,8 +1,20 @@
 import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import SEO from '../components/SEO';
 import './ContactUs.css';
 
 export default function ContactUs() {
-  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'submitted'
+  const [submitStatus, setSubmitStatus] = useState('idle'); // 'idle' | 'submitting' | 'submitted' | 'error'
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: 'Strategic Partnership',
+    message: ''
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
 
   useEffect(() => {
     // Background Atmosphere - slow movement
@@ -21,15 +33,50 @@ export default function ContactUs() {
     };
   }, []);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setSubmitStatus('submitting');
+    
+    try {
+      const response = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          company: formData.subject,
+          message: formData.message
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus('submitted');
+        toast.success('Signal Delivered! Our team will contact you shortly.');
+        setFormData({ name: '', email: '', subject: 'Strategic Partnership', message: '' });
+      } else {
+        if (response.status === 429) {
+          toast.error('Too many requests. Please try again later.');
+        } else {
+          toast.error('Transmission failed. Please try again.');
+        }
+        setSubmitStatus('error');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      toast.error('System error. Please check your connection.');
+      setSubmitStatus('error');
+    }
+    
     setTimeout(() => {
-      setSubmitStatus('submitted');
-    }, 2000);
+      setSubmitStatus('idle');
+    }, 5000);
   };
 
   return (
+    <>
+    <SEO title="Contact Us | Zynloft Solutions" description="Connect with Zynloft architects to start your enterprise technical transformation." />
     <div className="contact-body-wrap font-body-md text-on-surface min-h-screen">
       <div className="star-field"></div>
 
@@ -60,14 +107,14 @@ export default function ContactUs() {
                     <label className="font-label-sm text-label-sm text-on-surface-variant ml-1">FULL NAME</label>
                     <div className="glow-on-focus bg-surface-container rounded-xl flex items-center px-4 border border-outline-variant transition-all duration-300">
                       <span className="material-symbols-outlined text-outline">person</span>
-                      <input className="w-full bg-transparent border-none focus:ring-0 py-4 text-on-surface placeholder:text-outline-variant" placeholder="John Doe" type="text" />
+                      <input name="name" value={formData.name} onChange={handleChange} className="w-full bg-transparent border-none focus:ring-0 py-4 text-on-surface placeholder:text-outline-variant" placeholder="John Doe" type="text" required />
                     </div>
                   </div>
                   <div className="space-y-2 group">
                     <label className="font-label-sm text-label-sm text-on-surface-variant ml-1">EMAIL ADDRESS</label>
                     <div className="glow-on-focus bg-surface-container rounded-xl flex items-center px-4 border border-outline-variant transition-all duration-300">
                       <span className="material-symbols-outlined text-outline">alternate_email</span>
-                      <input className="w-full bg-transparent border-none focus:ring-0 py-4 text-on-surface placeholder:text-outline-variant" placeholder="john@zynloft.com" type="email" />
+                      <input name="email" value={formData.email} onChange={handleChange} className="w-full bg-transparent border-none focus:ring-0 py-4 text-on-surface placeholder:text-outline-variant" placeholder="john@zynloft.com" type="email" required />
                     </div>
                   </div>
                 </div>
@@ -75,11 +122,11 @@ export default function ContactUs() {
                 <div className="space-y-2">
                   <label className="font-label-sm text-label-sm text-on-surface-variant ml-1">SUBJECT</label>
                   <div className="glow-on-focus bg-surface-container rounded-xl flex items-center px-4 border border-outline-variant transition-all duration-300">
-                    <select className="w-full bg-transparent border-none focus:ring-0 py-4 text-on-surface appearance-none cursor-pointer">
-                      <option className="bg-surface-container">Strategic Partnership</option>
-                      <option className="bg-surface-container">Technical Architecture</option>
-                      <option className="bg-surface-container">Product Development</option>
-                      <option className="bg-surface-container">Other Inquiry</option>
+                    <select name="subject" value={formData.subject} onChange={handleChange} className="w-full bg-transparent border-none focus:ring-0 py-4 text-on-surface appearance-none cursor-pointer">
+                      <option className="bg-surface-container" value="Strategic Partnership">Strategic Partnership</option>
+                      <option className="bg-surface-container" value="Technical Architecture">Technical Architecture</option>
+                      <option className="bg-surface-container" value="Product Development">Product Development</option>
+                      <option className="bg-surface-container" value="Other Inquiry">Other Inquiry</option>
                     </select>
                   </div>
                 </div>
@@ -87,7 +134,7 @@ export default function ContactUs() {
                 <div className="space-y-2">
                   <label className="font-label-sm text-label-sm text-on-surface-variant ml-1">YOUR MESSAGE</label>
                   <div className="glow-on-focus bg-surface-container rounded-xl px-4 py-4 border border-outline-variant transition-all duration-300">
-                    <textarea className="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline-variant resize-none" placeholder="Describe your vision..." rows="5"></textarea>
+                    <textarea name="message" value={formData.message} onChange={handleChange} className="w-full bg-transparent border-none focus:ring-0 text-on-surface placeholder:text-outline-variant resize-none" placeholder="Describe your vision..." rows="5" required></textarea>
                   </div>
                 </div>
 
@@ -210,7 +257,7 @@ export default function ContactUs() {
         </section>
       </main>
 
-      
     </div>
+    </>
   );
 }

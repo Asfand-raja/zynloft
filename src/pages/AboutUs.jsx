@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from 'react';
+import SEO from '../components/SEO';
 import './AboutUs.css';
 
 export default function AboutUs() {
@@ -56,6 +57,8 @@ export default function AboutUs() {
   }, []);
 
   return (
+    <>
+    <SEO title="About Us | Zynloft Solutions" description="Zynloft Solutions is a collective of visionaries, engineers, and designers." />
     <div className="about-body-wrap min-h-screen bg-background text-on-background selection:bg-primary-container selection:text-white">
       <main className="relative overflow-hidden pt-20">
         {/* Background Effects */}
@@ -189,5 +192,6 @@ export default function AboutUs() {
         </section>
       </main>
     </div>
+    </>
   );
 }

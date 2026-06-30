@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './Portfolio.css';
 
 export default function Portfolio() {
@@ -21,7 +22,9 @@ export default function Portfolio() {
   }, []);
 
   return (
-    <div className="portfolio-body-wrap font-body-md selection:bg-primary-container selection:text-white min-h-screen">
+    <>
+    <SEO title="Portfolio | Zynloft Solutions" description="Discover our high-performance technical ecosystems and digital transformations." />
+    <div className="portfolio-body-wrap font-body-md bg-background text-on-background selection:bg-primary-container selection:text-white min-h-screen overflow-x-hidden">
       <div id="particles-js"></div>
 
       <main className="pt-32 pb-section-gap">
@@ -179,5 +182,6 @@ export default function Portfolio() {
         </section>
       </main>
     </div>
+    </>
   );
 }

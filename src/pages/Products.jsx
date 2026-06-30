@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './Products.css';
 
 export default function Products() {
@@ -22,6 +23,8 @@ export default function Products() {
   }, []);
 
   return (
+    <>
+    <SEO title="Products | Zynloft Solutions" description="Our suite of SaaS tools is designed for high-performance enterprise teams." />
     <div className="products-body-wrap font-body-md min-h-screen">
       <main className="pt-20">
         {/* Hero Section */}
@@ -189,5 +192,6 @@ export default function Products() {
         </section>
       </main>
     </div>
+    </>
   );
 }

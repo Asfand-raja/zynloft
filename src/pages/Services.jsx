@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
 import './Services.css';
 
 export default function Services() {
@@ -21,6 +22,8 @@ export default function Services() {
   }, []);
 
   return (
+    <>
+    <SEO title="Services | Zynloft Solutions" description="Zynloft delivers precision-engineered software for the technical elite." />
     <div className="bg-background text-on-background font-body-md selection:bg-primary-container selection:text-on-primary-container overflow-x-hidden particle-bg min-h-screen">
       <main className="relative">
         {/* Hero Section */}
@@ -232,5 +235,6 @@ export default function Services() {
         </section>
       </main>
     </div>
+    </>
   );
 }

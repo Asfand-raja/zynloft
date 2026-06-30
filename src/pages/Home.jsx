@@ -1,4 +1,7 @@
 import React, { useEffect } from 'react';
+import SEO from '../components/SEO';
+import HeroGlow from '../components/HeroGlow';
+import GlassCard from '../components/GlassCard';
 import './Home.css';
 import logoUrl from '../zynloft.jpeg';
 
@@ -56,6 +59,8 @@ export default function Home() {
   }, []);
 
   return (
+    <>
+    <SEO title="Zynloft Solutions | Enterprise Innovation" description="Building Future-Ready Digital Solutions. We engineer high-performance technical ecosystems." />
     <div className="home-body-wrap min-h-screen font-body-md bg-background text-on-background selection:bg-primary-container selection:text-white overflow-x-hidden">
       {/* Opening Experience */}
       <div className="opening-overlay fixed inset-0 z-[100] bg-black flex items-center justify-center">
@@ -70,8 +75,8 @@ export default function Home() {
       <main className="pt-20">
         {/* Hero Section */}
         <section className="relative min-h-[921px] flex items-center px-container-mobile md:px-container-desktop max-w-[1440px] mx-auto overflow-hidden">
-          <div className="hero-glow -top-20 -left-20"></div>
-          <div className="hero-glow -bottom-20 -right-20" style={{ animationDelay: '-4s' }}></div>
+          <HeroGlow position="top-left" />
+          <HeroGlow position="bottom-right" delay="-4s" />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-gutter items-center w-full">
             {/* Left Content */}
             <div className="z-10">
@@ -95,7 +100,7 @@ export default function Home() {
               </div>
               {/* Floating Glassmorphism Cards */}
               <div className="relative w-full h-full flex items-center justify-center">
-                <div className="glass-card absolute top-20 right-10 p-6 rounded-2xl w-64 transform hover:-translate-y-2 transition-transform duration-500 z-20">
+                <GlassCard className="absolute top-20 right-10 p-6 w-64 transform hover:-translate-y-2 transition-transform duration-500 z-20">
                   <div className="flex items-center gap-4 mb-4">
                     <div className="w-10 h-10 rounded-lg bg-primary-container flex items-center justify-center">
                       <span className="material-symbols-outlined text-white" data-weight="fill">monitoring</span>
@@ -106,8 +111,8 @@ export default function Home() {
                     <div className="h-full bg-primary w-3/4"></div>
                   </div>
                   <div className="text-[20px] font-headline-lg text-on-surface">+142% Growth</div>
-                </div>
-                <div className="glass-card absolute bottom-20 left-10 p-6 rounded-2xl w-72 transform hover:translate-y-[-8px] transition-transform duration-500 z-10 backdrop-blur-2xl">
+                </GlassCard>
+                <GlassCard className="absolute bottom-20 left-10 p-6 w-72 transform hover:translate-y-[-8px] transition-transform duration-500 z-10 backdrop-blur-2xl">
                   <div className="font-label-sm text-[10px] text-primary mb-2">SYSTEM_STATUS: OPTIMAL</div>
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
@@ -337,5 +342,6 @@ export default function Home() {
         </section>
       </main>
     </div>
+    </>
   );
 }
