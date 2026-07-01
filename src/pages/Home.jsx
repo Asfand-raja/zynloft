@@ -128,7 +128,7 @@ export default function Home() {
                       <span className="material-symbols-outlined text-primary text-sm">sync</span>
                     </div>
                   </div>
-                </div>
+                </GlassCard>
                 <img className="w-4/5 h-4/5 object-cover rounded-3xl grayscale opacity-40 mix-blend-screen" data-alt="A sophisticated 3D digital visualization of a neural network with glowing red nodes and orange connecting lines floating in a deep black space. The image features cinematic lighting with subtle lens flares and a futuristic tech-noir aesthetic, emphasizing enterprise innovation and high-speed data processing." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDFb1cJv54nx7wF9J0tzHMNY9Fgv9j-fqWl3G2RsWwrtGrKmlgrBOCjRotiShcqKae3hrgUXOUVHCf8eW9MRGZxHGadv9My2c9nvxb6N6Q_NxR4G2pt96tVRbsH5DJ15lwQaoHZuFpvOkJFpjEySuQAtho-paL1QhdySJzClKBqRz5HbFpRhHGXnp_-S-03cmdfDQZSFyVsS4KqPtwT8uhJqYGjYJhURI3qsDIIzArojnFJzgAAD2ipDIjEtQg8R-jjzrJj0Cq9jaU" alt="Neural Network" />
               </div>
             </div>
